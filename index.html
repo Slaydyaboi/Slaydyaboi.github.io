@@ -90,4 +90,203 @@
             border-bottom: 1px solid #ddd;
             padding-bottom: 8px;
             margin-top: 40px;
-            font-weight: 5
+            font-weight: 500;
+        }
+        h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* Clearfix to stop the text from wrapping around the floated image */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* --- Glitch Effect CSS --- */
+        .glitch-container {
+            display: inline-block;
+            position: relative;
+            /* This helps align it with your text */
+            vertical-align: bottom; 
+        }
+
+        #glitch-word {
+            position: relative;
+            color: #007bff; /* Uses your existing link color */
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        #glitch-word.glitching {
+            animation: glitch 400ms 1;
+        }
+
+        #glitch-word.glitching::before,
+        #glitch-word.glitching::after {
+            /* Grabs the text from the data-text attribute */
+            content: attr(data-text); 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* * IMPORTANT: This matches your page's background color */
+            background: #fffded; 
+        }
+
+        #glitch-word.glitching::before {
+            left: -2px;
+            text-shadow: -1px 0 red;
+            animation: glitch-anim-1 400ms 1;
+        }
+
+        #glitch-word.glitching::after {
+            left: 2px;
+            text-shadow: 1px 0 blue;
+            animation: glitch-anim-2 400ms 1;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip-path: inset(10% 0 80% 0); }
+            10% { clip-path: inset(50% 0 10% 0); }
+            20% { clip-path: inset(90% 0 1% 0); }
+            100% { clip-path: inset(60% 0 30% 0); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip-path: inset(70% 0 10% 0); }
+            10% { clip-path: inset(10% 0 80% 0); }
+            20% { clip-path: inset(40% 0 40% 0); }
+            100% { clip-path: inset(10% 0 70% 0); }
+        }
+        /* --- End of Glitch Effect CSS --- */
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <figure class="profile-image">
+            <img src="https://via.placeholder.com/200x150" alt="Placeholder image">
+            <figcaption>
+                A photo from [Location] (2025)
+            </figcaption>
+        </figure>
+
+        <header>
+            <h1>Franco Barreto</h1>
+            <p class="email">fbarr058 [at] uottawa [dot] ca</p>
+        </header>
+
+        <main class="clearfix">
+            <section id="about">
+                <p>
+                    Hello There! I'm Franco, a student at the University of Ottawa in Electrical Engineering. 
+                    I'm interested in 
+                    <span class="glitch-container">
+                        <span id="glitch-word" data-text="circuit analysis">circuit analysis</span>
+                    </span>.
+                </p>
+                <p>
+                    I enjoy solving complex problems, whether it's through nodal analysis in my
+                    coursework (like ELG 2137) or configuring a personal web server. 
+                    I'm always interested in learning new technologies.
+                </p>
+            </section>
+
+            <section class="links">
+                <p>
+                    <a href="https://github.com/slaydyaboi" target="_blank">github</a> / 
+                    <a href="https://www.linkedin.com/in/francobarreto/" target="_blank">linkedin</a> / 
+                    <a href="resume.pdf" target="_blank">cv (pdf)</a>
+                </p>
+            </section>
+
+            <section id="projects">
+                <h2>Relevant Coursework</h2>
+                
+                <h3>Circuit Analysis Labs (ELG 2137) </h3>
+                <p>
+                    Applied theoretical concepts like nodal analysis, Thevenin's theorem,
+                    and Kirchhoff's Laws to build and test real circuits. Used Multisim 
+                    to simulate and validate results before and after lab sessions.
+                </p>
+
+                <h3>Personal Website (francobarreto.me)</h3>
+                <p>
+                    This website. Built with plain HTML/CSS and hosted for free using
+                    GitHub Pages. Configured custom domain routing through Namecheap.
+                </T>
+
+                <h3>Linux Dual-Boot Setup</h3>
+                <p>
+                    Configured a dual-boot system with Windows and Fedora, managing
+                    drive partitions, bootloaders, and package management.
+                </p>
+                
+                <h3>Sampling Scraper for CNL (GNG 1103) </h3>
+                <p>
+                    For one of my courses, in a group, we had to design a sampling system for nuclear.
+                    Find out more about the code @ https://github.com/Slaydyaboi/Mass-collector.
+                </p>
+            </section>
+        </main>
+
+    </div>
+
+
+    <script>
+        // --- Configuration ---
+
+        // ** ADD ALL YOUR INTERESTS HERE! **
+        const interests = [
+            'circuit analysis',
+            'Linux (Fedora)',
+            'fantasy basketball',
+            'digital logic',
+            'configuring web servers',
+        ];
+
+        // The time (in milliseconds) between glitches
+        // 30000ms = 30 seconds (as you requested)
+        // (For testing, you can change this to 3000)
+        const GLITCH_INTERVAL = 30000; 
+
+        // --- End of Configuration ---
+
+        const glitchWordElement = document.getElementById('glitch-word');
+        let currentIndex = 0;
+
+        function swapWord() {
+            // 1. Get the next word from our list
+            // This loops back to 0 when it reaches the end
+            currentIndex = (currentIndex + 1) % interests.length; 
+            const nextWord = interests[currentIndex];
+
+            // 2. Add the "glitching" class to trigger the CSS animation
+            glitchWordElement.classList.add('glitching');
+
+            // 3. Wait for the glitch animation to be part-way through
+            setTimeout(() => {
+                // Change the text content
+                glitchWordElement.textContent = nextWord;
+                // IMPORTANT: Update the data-text for the CSS animation
+                glitchWordElement.setAttribute('data-text', nextWord);
+            }, 200); // 200ms into the animation
+
+            // 4. After the animation is totally done (400ms),
+            //    remove the class so it's ready for next time.
+            setTimeout(() => {
+                glitchWordElement.classList.remove('glitching');
+            }, 400);
+        }
+
+        // Start the timer!
+        setInterval(swapWord, GLITCH_INTERVAL);
+    </script>
+    </body>
+</html>
