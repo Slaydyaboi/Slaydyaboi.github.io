@@ -163,7 +163,20 @@
             100% { clip-path: inset(10% 0 70% 0); }
         }
         /* --- End of Glitch Effect CSS --- */
-
+/* --- New Skills Section Style --- */
+.skills-category h3 {
+    /* Re-use the project title style */
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.skills-category p {
+    /* Make the skills list look a bit different */
+    font-family: 'Courier New', Courier, monospace;
+    color: #555;
+    margin-top: 0;
+    line-height: 1.5;
+}
     </style>
 </head>
 <body>
@@ -193,7 +206,7 @@
                 </p>
                 <p>
                     I enjoy solving complex problems, whether it's through nodal analysis in my
-                    coursework (like ELG 2137) or configuring a personal web server. 
+                    coursework (like ELG 2137) or in my personal projects. 
                     I'm always interested in learning new technologies.
                 </p>
             </section>
@@ -206,33 +219,88 @@
                 </p>
             </section>
 
+            <section id="work-experience">
+                <h2>My Professional Experience</h2>
+
+                <div class="job">
+                    <h3>Mobilinx</h3>
+                    <p class="job-subheading">
+                        <strong>Delivery Team Intern</strong> | June 2025 – Aug. 2025 | Mississauga, ON
+                    </p>
+                    <p>
+                        As an intern on the delivery team, I got hands-on experience in project management and quality control. My days involved conducting site surveys, performing takeoffs from construction drawings, and writing in-depth reports. I also learned to manage project documentation like NCRs and RFIs using Procore, which required collaborating across different teams to ensure everything stayed on track.
+                    </p>
+                </div>
+
+                <div class="job">
+                    <h3>Camp Omagh</h3>
+                    <p class="job-subheading">
+                        <strong>Lifeguard</strong> | July 2023 – Aug. 2023 | Milton, ON
+                    </p>
+                    <p>
+                        Working as a lifeguard was a role with serious responsibility. I was responsible for the safety of all campers and staff in aquatic areas, acting as the primary first-aid responder, and managing all medical documentation. It also involved a lot of teamwork with camp counsellors to facilitate activities and create a fun, safe environment for the kids.
+                    </p>
+                </div>
+            </section>
+
+            <section id="leadership">
+                <h2>Leadership</h2>
+
+                <div class="job">
+                    <h3>Model UN & DECA</h3>
+                    <p class="job-subheading">
+                        <strong>President</strong> | Sept. 2022 – June 2024 | Brampton, ON
+                    </p>
+                    <p>
+                        I had the privilege of serving as President for both my school's Model UN and DECA chapters. For Model UN, my focus was on rebuilding: I implemented consistent weekly operations that doubled our membership and led our first delegation to a regional conference. With DECA, I developed a new member training program that tripled our membership and led to a 150% increase in provincial qualifiers.
+                    </p>
+                </div>
+            </section>
+
             <section id="projects">
-                <h2>Relevant Coursework</h2>
+                <h2>Projects & Key Coursework</h2>
                 
-                <h3>Circuit Analysis Labs (ELG 2137) </h3>
-                <p>
-                    Applied theoretical concepts like nodal analysis, Thevenin's theorem,
-                    and Kirchhoff's Laws to build and test real circuits. Used Multisim 
-                    to simulate and validate results before and after lab sessions.
-                </p>
+                <div class="project">
+                    <h3>Circuit Analysis (ELG 2137)</h3>
+                    <p>
+                        This is where my theoretical knowledge met real-world application. I applied concepts like nodal analysis, Thevenin's theorem, and Kirchhoff's Laws to build and test physical circuits. A key part of the process was using Multisim to simulate and validate our results, which taught me the importance of bridging the gap between theory and practice.
+                    </p>
+                </div>
 
-                <h3>Personal Website (francobarreto.me)</h3>
-                <p>
-                    This website. Built with plain HTML/CSS and hosted for free using
-                    GitHub Pages. Configured custom domain routing through Namecheap.
-                </T>
+                <div class="project">
+                    <h3>Sampling Scraper for CNL (GNG 1103)</h3>
+                    <p>
+                        As part of a group project, we were tasked with designing a sampling system for nuclear applications. This involved a lot of problem-solving and collaboration. You can find the code for our project on <a href="https://github.com/Slaydyaboi/Mass-collector" target="_blank">GitHub</a>.
+                    </p>
+                </div>
+                 
+                <div class="project">
+                    <h3>Personal Tech Projects</h3>
+                    <p>
+                        I love tinkering with technology. This very website is a project itself, built with HTML/CSS and hosted on GitHub Pages, including configuring the custom domain DNS records. I also set up a dual-boot system on my PC with Windows and Fedora, which involved managing partitions, bootloaders, and troubleshooting NVIDIA drivers in a Linux environment.
+                    </p>
+                </div>
+            </section>
 
-                <h3>Linux Dual-Boot Setup</h3>
-                <p>
-                    Configured a dual-boot system with Windows and Fedora, managing
-                    drive partitions, bootloaders, and package management.
-                </p>
+            <section id="skills">
+                <h2>My Technical Toolkit</h2>
                 
-                <h3>Sampling Scraper for CNL (GNG 1103) </h3>
-                <p>
-                    For one of my courses, in a group, we had to design a sampling system for nuclear.
-                    Find out more about the code @ https://github.com/Slaydyaboi/Mass-collector.
-                </p>
+                <div class="skills-category">
+                    <h3>Core Technologies & Languages</h3>
+                    <p>C, VHDL, Linux, MATLAB, Microsoft Office</p>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Engineering & Project Software</h3>
+                    <p>Multisim, Quartus, AutoCAD, Procore, Bluebeam, SCADA</p>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Certifications & Interpersonal Skills</h3>
+                    <p>
+                        I'm certified in First Aid, CPR, Workplace Safety, and Working at Height. I also pride myself on my skills in problem-solving, project coordination, and cross-team collaboration.
+                    </p>
+                </div>
             </section>
         </main>
 
