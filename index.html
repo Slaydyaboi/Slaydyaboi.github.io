@@ -240,53 +240,57 @@
 
 
     <script>
-        // --- Configuration ---
+        // This new line waits for the HTML page to be fully loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+        
+            // --- Configuration ---
+            const interests = [
+                'circuit analysis',
+                'Linux (Fedora)',
+                'fantasy basketball',
+                'digital logic',
+                'configuring web servers',
+                'swimming',
+                'working out'
+            ];
 
-        // ** ADD ALL YOUR INTERESTS HERE! **
-        const interests = [
-            'circuit analysis',
-            'Linux (Fedora)',
-            'fantasy basketball',
-            'digital logic',
-            'configuring web servers',
-        ];
+            const GLITCH_INTERVAL = 30000; // 30 seconds
+            // --- End of Configuration ---
 
-        // The time (in milliseconds) between glitches
-        // 30000ms = 30 seconds (as you requested)
-        // (For testing, you can change this to 3000)
-        const GLITCH_INTERVAL = 30000; 
+            // All the code is now INSIDE the event listener
+            const glitchWordElement = document.getElementById('glitch-word');
+            let currentIndex = 0;
 
-        // --- End of Configuration ---
+            function swapWord() {
+                // 1. Get the next word from our list
+                currentIndex = (currentIndex + 1) % interests.length; 
+                const nextWord = interests[currentIndex];
 
-        const glitchWordElement = document.getElementById('glitch-word');
-        let currentIndex = 0;
+                // 2. Add the "glitching" class
+                glitchWordElement.classList.add('glitching');
 
-        function swapWord() {
-            // 1. Get the next word from our list
-            // This loops back to 0 when it reaches the end
-            currentIndex = (currentIndex + 1) % interests.length; 
-            const nextWord = interests[currentIndex];
+                // 3. Wait for the animation to start
+                setTimeout(() => {
+                    glitchWordElement.textContent = nextWord;
+                    glitchWordElement.setAttribute('data-text', nextWord);
+                }, 200);
 
-            // 2. Add the "glitching" class to trigger the CSS animation
-            glitchWordElement.classList.add('glitching');
+                // 4. Remove the class after animation is done
+                setTimeout(() => {
+                    glitchWordElement.classList.remove('glitching');
+                }, 400);
+            }
 
-            // 3. Wait for the glitch animation to be part-way through
-            setTimeout(() => {
-                // Change the text content
-                glitchWordElement.textContent = nextWord;
-                // IMPORTANT: Update the data-text for the CSS animation
-                glitchWordElement.setAttribute('data-text', nextWord);
-            }, 200); // 200ms into the animation
-
-            // 4. After the animation is totally done (400ms),
-            //    remove the class so it's ready for next time.
-            setTimeout(() => {
-                glitchWordElement.classList.remove('glitching');
-            }, 400);
-        }
-
-        // Start the timer!
-        setInterval(swapWord, GLITCH_INTERVAL);
+            // Make sure the element was actually found before starting
+            if (glitchWordElement) {
+                // Start the timer
+                setInterval(swapWord, GLITCH_INTERVAL);
+            } else {
+                console.error("Error: Could not find element with id 'glitch-word'.");
+            }
+            
+        });
     </script>
+
     </body>
 </html>
