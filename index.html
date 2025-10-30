@@ -8,13 +8,10 @@
     <style>
         /* --- Base Cosmic Theme --- */
         body {
-            font-family: Monospace, 'Courier New', Courier, sans-serif; /* A bit more modern monospace for dark theme */
+            font-family: Monospace, 'Courier New', Courier, sans-serif;
             line-height: 1.6;
             background-color: #000000; /* Pitch black */
             color: #E0E0E0; /* Off-white for star-like text */
-            max-width: 900px; /* Slightly wider for a more open feel */
-            margin: 40px auto;
-            padding: 0 30px; /* More padding for dark theme */
             position: relative; /* Needed for shooting stars */
             overflow-x: hidden; /* Prevent horizontal scroll from stars */
         }
@@ -76,10 +73,11 @@
         }
         
         /* Container for content - now also black for seamless blend */
-       .container {
-            /* We removed the background-color, border-radius, and box-shadow */
+      .container {
+            /* This now centers your content on the full-page body */
+            max-width: 900px;
+            margin: 40px auto;
             padding: 30px 40px;
-        }
         }
 
         /* --- Header --- */
@@ -196,8 +194,9 @@
 
         #glitch-word.glitching::before,
         #glitch-word.glitching::after {
-            /* IMPORTANT: This MUST match your page's container background color for the glitch to work */
-            background: rgba(0, 0, 0, 0.7); /* Match container background */
+            /* This now matches the pitch-black page background */
+            background: #000000; 
+        
         }
 
         /* Clearfix */
